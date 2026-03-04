@@ -1,13 +1,22 @@
 # PropertyScope AI
 
-An intelligent housing price prediction application built with Next.js, Genkit, and Firebase. This project leverages machine learning to provide property valuations and detailed market insights.
+An intelligent housing price prediction application built with Next.js, Genkit, and Firebase. This project leverages machine learning to provide property valuations and detailed market insights based on the King County, Washington dataset.
 
 ## Features
 
-- **AI-Powered Estimations**: Real-time property value predictions using Gemini.
-- **Detailed Explanations**: Understand the "why" behind every price estimation.
-- **Interactive Reports**: Documentation of the project methodology and data analysis.
-- **Modern UI**: Built with React, Tailwind CSS, and ShadCN UI.
+- **AI-Powered Estimations**: Real-time property value predictions using Gemini based on 11 critical parameters.
+- **Detailed Explanations**: Understand the "why" behind every price estimation, highlighting factors like waterfront status and construction grade.
+- **Interactive Reports**: Comprehensive documentation of project methodology, data analysis, and model performance.
+- **Modern UI**: Built with React, Tailwind CSS, and ShadCN UI components.
+
+## Parameters Used (King County Dataset)
+
+The prediction model utilizes the following factors sourced from regional historical trends in Washington, USA:
+- **Dimensions**: Square footage, Bedrooms, Bathrooms, Floors.
+- **Location**: Zip Code (focused on King County).
+- **Quality**: Construction Grade (1-13), Property Condition (1-5).
+- **Luxury**: Waterfront Status, View Quality (0-4).
+- **Temporal**: Year Built.
 
 ## Getting Started
 
@@ -24,7 +33,7 @@ An intelligent housing price prediction application built with Next.js, Genkit, 
 
 ## How to push to GitHub
 
-To push this project to your own GitHub account, follow these steps in your terminal:
+To push this project to your own GitHub account:
 
 1. **Initialize Git**:
    ```bash
