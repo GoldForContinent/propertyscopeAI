@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Loader2, Sparkles, RefreshCcw, DollarSign, Info } from "lucide-react"
+import { Loader2, Sparkles, RefreshCcw, DollarSign, Info, Calculator, LineChart } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 
 const formSchema = z.object({
