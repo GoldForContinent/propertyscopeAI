@@ -55,6 +55,24 @@ To push this project to your repository at **https://github.com/GoldForContinent
    git push -u origin main
    ```
 
+## Deployment (Host your app)
+
+To have a live website that anyone can visit:
+
+### Option 1: Firebase App Hosting (Recommended)
+1. Go to the [Firebase Console](https://console.firebase.google.com/).
+2. Create a project and select **App Hosting** from the left sidebar.
+3. Click **Get Started** and connect your GitHub account.
+4. Select the `GoldForContinent/propertyscopeAI` repository.
+5. Firebase will automatically detect your Next.js project and deploy it.
+6. Once finished, you will get a `.web.app` or `.apphosting.app` domain.
+
+### Option 2: Vercel
+1. Go to [Vercel](https://vercel.com/) and sign in with GitHub.
+2. Click **New Project** and import `propertyscopeAI`.
+3. Add your `GEMINI_API_KEY` in the **Environment Variables** section during setup.
+4. Click **Deploy**. You will get a `.vercel.app` domain.
+
 ## Tech Stack
 
 - **Framework**: [Next.js 15](https://nextjs.org/)
