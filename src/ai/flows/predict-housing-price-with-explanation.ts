@@ -15,19 +15,20 @@ const PredictHousingPriceWithExplanationInputSchema = z.object({
   numberOfBedrooms: z.number().int().positive().describe('The number of bedrooms in the property.'),
   numberOfBathrooms: z.number().positive().describe('The number of bathrooms in the property.'),
   zipCode: z.string().length(5).regex(/^\d{5}$/).describe('The 5-digit zip code of the property location.'),
-  yearBuilt: z.number().int().min(1800).max(new Date().getFullYear()).describe('The year the property was built.'),
+  yearBuilt: z.number().int().min(1800).max(new Date().getFullYear() + 20).describe('The year the property was built.'),
   propertyType: z.enum(['single_family', 'condo', 'townhouse']).describe('The type of property (e.g., single_family, condo, townhouse).'),
   floors: z.number().min(1).max(4).describe('The number of floors in the property.'),
   waterfront: z.boolean().describe('Whether the property has a waterfront view.'),
   viewScore: z.number().int().min(0).max(4).describe('The quality of the view from the property (0-4 scale).'),
   conditionScore: z.number().int().min(1).max(5).describe('The overall condition of the property (1-5 scale).'),
   gradeScore: z.number().int().min(1).max(13).describe('The design and construction quality grade (1-13 scale).'),
+  valuationYear: z.number().int().min(2015).max(2050).describe('The target year for the price estimation (to account for appreciation/trends).'),
 });
 export type PredictHousingPriceWithExplanationInput = z.infer<typeof PredictHousingPriceWithExplanationInputSchema>;
 
 const PredictHousingPriceWithExplanationOutputSchema = z.object({
   predictedPrice: z.number().positive().describe('The estimated housing price in USD.'),
-  explanation: z.string().describe('A brief, human-readable explanation of the key factors influencing the prediction.'),
+  explanation: z.string().describe('A brief, human-readable explanation of the key factors influencing the prediction, including market trend logic if predicting for the future.'),
 });
 export type PredictHousingPriceWithExplanationOutput = z.infer<typeof PredictHousingPriceWithExplanationOutputSchema>;
 
@@ -56,8 +57,14 @@ Property Characteristics:
 - Zip Code: {{{zipCode}}}
 - Year Built: {{{yearBuilt}}}
 
-Based on these details, what is the estimated market price of this property?
-Provide the predicted price and a brief explanation of the key factors that influenced this price, considering typical market conditions and property valuation principles. Highlight specifically how factors like Waterfront or Construction Grade impacted the value if they are exceptional.`,
+Target Valuation Context:
+- Target Year for Estimation: {{{valuationYear}}}
+
+Instructions:
+1. Use the King County 2014-2015 housing dataset as your baseline regression logic.
+2. If the target valuation year is beyond 2015, apply reasonable real estate appreciation trends for the Pacific Northwest (specifically King County, WA) to estimate the future value.
+3. Consider factors like inflation, tech sector growth in Seattle/Bellevue, and historical regional performance.
+4. Provide the predicted price and a brief explanation of the key factors. If predicting for a future year (e.g., 2040), explicitly mention how appreciation trends influenced the result.`,
 });
 
 const predictHousingPriceWithExplanationFlow = ai.defineFlow(
