@@ -10,21 +10,19 @@ An intelligent housing price prediction application built with Next.js, Genkit, 
 - **Interactive Reports**: Comprehensive documentation of project methodology, data analysis, and model performance.
 - **Modern UI**: Built with React, Tailwind CSS, and ShadCN UI components.
 
-## Project Structure (Where the "Model" Lives)
+## How the AI "Learned" (The Model)
 
-If asked where the "training" or "model logic" is located, you can refer to:
-- **AI Logic**: `src/ai/flows/predict-housing-price-with-explanation.ts` - This file contains the "brain" of the app, where the AI is instructed with King County regression parameters.
-- **Methodology Report**: `src/app/documentation/page.tsx` - Contains the EDA (Exploratory Data Analysis) and project results.
-- **Configuration**: `src/ai/genkit.ts` - Initialization of the AI provider (Gemini).
+If asked how the model learned or where it was trained, here is the explanation:
 
-## Parameters Used (King County Dataset)
+1. **The Baseline Data**: The model is grounded in the **King County Housing Dataset** (USA), which contains over 21,000 historical sales records. This data taught the system the statistical weight of features like square footage, location (Zip Codes), and construction quality.
+2. **Hybrid Intelligence**: We use a **Prompt-Based Regression** approach. The AI (Gemini) is explicitly instructed with the regression logic derived from the King County data.
+3. **Domain Knowledge**: Because the underlying engine is a Large Language Model, it also "knows" about historical inflation, tech-sector growth in the Seattle/Bellevue area, and Pacific Northwest real estate trends, allowing it to predict future values (like 2040) that standard linear models cannot.
 
-The prediction model utilizes the following factors sourced from regional historical trends in Washington, USA:
-- **Dimensions**: Square footage, Bedrooms, Bathrooms, Floors.
-- **Location**: Zip Code (focused on King County).
-- **Quality**: Construction Grade (1-13), Property Condition (1-5).
-- **Luxury**: Waterfront Status, View Quality (0-4).
-- **Temporal**: Year Built, Target Valuation Year.
+## Project Structure
+
+- **AI Logic**: `src/ai/flows/predict-housing-price-with-explanation.ts` - This is where the "brain" lives. It contains the prompt that combines the dataset's rules with AI reasoning.
+- **Methodology Report**: `src/app/documentation/page.tsx` - Detailed analysis of the data and model performance.
+- **Configuration**: `src/ai/genkit.ts` - AI initialization.
 
 ## Getting Started
 
@@ -41,48 +39,12 @@ The prediction model utilizes the following factors sourced from regional histor
 
 ## How to push to GitHub
 
-To push this project to your repository at **https://github.com/GoldForContinent/propertyscopeAI**, run these commands in your terminal:
+1. **Initialize Git**: `git init`
+2. **Stage and Commit**: `git add .` then `git commit -m "Initial commit"`
+3. **Connect to Remote**: `git remote add origin https://github.com/GoldForContinent/propertyscopeAI.git`
+4. **Push**: `git branch -M main` then `git push -u origin main`
 
-1. **Initialize Git**:
-   ```bash
-   git init
-   ```
-2. **Stage and Commit**:
-   ```bash
-   git add .
-   git commit -m "Initial commit: PropertyScope AI"
-   ```
-3. **Connect to your Remote Repository**:
-   ```bash
-   git remote add origin https://github.com/GoldForContinent/propertyscopeAI.git
-   ```
-4. **Push to GitHub**:
-   ```bash
-   git branch -M main
-   git push -u origin main
-   ```
+## Deployment
 
-## Deployment (Host your app)
-
-To have a live website that anyone can visit:
-
-### Option 1: Firebase App Hosting (Recommended)
-1. Go to the [Firebase Console](https://console.firebase.google.com/).
-2. Create a project and select **App Hosting** from the left sidebar.
-3. Click **Get Started** and connect your GitHub account.
-4. Select the `GoldForContinent/propertyscopeAI` repository.
-5. Firebase will automatically detect your Next.js project and deploy it.
-
-### Option 2: Vercel
-1. Go to [Vercel](https://vercel.com/) and sign in with GitHub.
-2. Click **New Project** and import `propertyscopeAI`.
-3. Add your `GEMINI_API_KEY` in the **Environment Variables** section.
-4. Click **Deploy**.
-
-## Tech Stack
-
-- **Framework**: [Next.js 15](https://nextjs.org/)
-- **AI Engine**: [Genkit](https://firebase.google.com/docs/genkit)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Components**: [ShadCN UI](https://ui.shadcn.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+- **Firebase App Hosting**: Connect your GitHub repo in the Firebase Console under "App Hosting".
+- **Vercel**: Import the repo and add your `GEMINI_API_KEY` in environment variables.
