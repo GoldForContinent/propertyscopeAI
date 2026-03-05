@@ -1,6 +1,6 @@
 # PropertyScope AI
 
-An intelligent housing price prediction application built with Next.js, Genkit, and Firebase. This project leverages machine learning to provide property valuations and detailed market insights based on the King County, Washington dataset.
+An intelligent housing price prediction application built with Next.js, Genkit, and Firebase. This project leverages machine learning and regional data to provide property valuations and detailed market insights based on the King County, Washington dataset.
 
 ## Features
 
@@ -9,6 +9,13 @@ An intelligent housing price prediction application built with Next.js, Genkit, 
 - **Detailed Explanations**: Understand the "why" behind every price estimation, highlighting factors like waterfront status and construction grade.
 - **Interactive Reports**: Comprehensive documentation of project methodology, data analysis, and model performance.
 - **Modern UI**: Built with React, Tailwind CSS, and ShadCN UI components.
+
+## Project Structure (Where the "Model" Lives)
+
+If asked where the "training" or "model logic" is located, you can refer to:
+- **AI Logic**: `src/ai/flows/predict-housing-price-with-explanation.ts` - This file contains the "brain" of the app, where the AI is instructed with King County regression parameters.
+- **Methodology Report**: `src/app/documentation/page.tsx` - Contains the EDA (Exploratory Data Analysis) and project results.
+- **Configuration**: `src/ai/genkit.ts` - Initialization of the AI provider (Gemini).
 
 ## Parameters Used (King County Dataset)
 
@@ -65,13 +72,12 @@ To have a live website that anyone can visit:
 3. Click **Get Started** and connect your GitHub account.
 4. Select the `GoldForContinent/propertyscopeAI` repository.
 5. Firebase will automatically detect your Next.js project and deploy it.
-6. Once finished, you will get a `.web.app` or `.apphosting.app` domain.
 
 ### Option 2: Vercel
 1. Go to [Vercel](https://vercel.com/) and sign in with GitHub.
 2. Click **New Project** and import `propertyscopeAI`.
-3. Add your `GEMINI_API_KEY` in the **Environment Variables** section during setup.
-4. Click **Deploy**. You will get a `.vercel.app` domain.
+3. Add your `GEMINI_API_KEY` in the **Environment Variables** section.
+4. Click **Deploy**.
 
 ## Tech Stack
 
